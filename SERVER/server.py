@@ -5,7 +5,7 @@ import hashlib
 import socket
 
 
-def fastModularExponentiation(base, exponent, prime):
+def fastModularExponentiation(base, exponent, prime):  #快速模幂
 	answer = base
 
 	sizeofexp = int(math.floor(math.log(exponent, 2)) + 1)
@@ -16,7 +16,7 @@ def fastModularExponentiation(base, exponent, prime):
 	return answer
 
 
-def primeFactorization(number):
+def primeFactorization(number): #素因子分解
 	primefactors = []
 	if number % 2 == 0:
 		primefactors.append(2)
@@ -32,7 +32,7 @@ def primeFactorization(number):
 	return primefactors
 
 
-def millerrabin(number, q, k, base):
+def millerrabin(number, q, k, base):  #miller rabin
 	if fastModularExponentiation(base, q, number) == 1:
 		return "inconclusive"
 	for j in range(k):
@@ -67,7 +67,7 @@ def gcd(a, b):
 	return gcd(b % a, a)
 
 
-def moduloMultiplicativeInverse(alpha, p):
+def moduloMultiplicativeInverse(alpha, p): #逆乘
 	if gcd(alpha, p) != 1:
 		return -1
 	return fastModularExponentiation(alpha, p-2, p)
